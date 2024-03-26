@@ -60,26 +60,22 @@ document.getElementById('cpf').addEventListener('blur', function() {
     }
 });
 
-function salvarNome(){
-    const nome = document.getElementById('nome').value;
-    localStorage.setItem('nome', nome);
-    
-}
+window.addEventListener('load', () => {
+    const campos = ['nome', 'surname', 'birthday', 'profission', 'cpf', 'email', 'pwd', 'telefone', 'address'];
 
-function mostrarNome(){
-    const nome = localStorage.getItem('nome');
-    alert(`Nome armazenado: ${nome}`);
-}
+    campos.forEach(campo => {
+        const value = localStorage.getItem(campo);
+        if (value) {
+            document.getElementById(campo).value = value;
+        }
+    });
 
-function limparNome(){
-    localStorage.removeItem('nome');
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const nome = localStorage.getItem('nome');
-    if (nome) {
-        document.getElementById('formularioExemplo').value = nome;
-    }
+    validate();
 });
 
-window.addEventListener('load', validate);
+document.addEventListener('change', (event) => {
+    if (event.target.matches('.form-control')) {
+        const { id, value } = event.target;
+        localStorage.setItem(id, value);
+    }
+});
