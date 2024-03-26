@@ -7,6 +7,10 @@ const validate = () => {
                 event.stopPropagation();
             }
             form.classList.add('was-validated');
+            // Limpar todos os itens do localStorage após o clique no botão "Salvar"
+            if (form.checkValidity()) {
+                limparLocalStorage();
+            }
         });
     });
 };
@@ -79,3 +83,7 @@ document.addEventListener('change', (event) => {
         localStorage.setItem(id, value);
     }
 });
+
+function limparLocalStorage() {
+    localStorage.clear();
+}
