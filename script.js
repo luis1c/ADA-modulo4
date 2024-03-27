@@ -65,7 +65,7 @@ document.getElementById('cpf').addEventListener('blur', function() {
 });
 
 window.addEventListener('load', () => {
-    const campos = ['nome', 'surname', 'birthday', 'profission', 'cpf', 'email', 'pwd', 'telefone', 'address'];
+    const campos = ['nome', 'surname', 'birthday', 'profission', 'cpf', 'email', 'password', 'telefone', 'address'];
 
     campos.forEach(campo => {
         const value = localStorage.getItem(campo);
